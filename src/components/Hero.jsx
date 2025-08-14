@@ -1,3 +1,4 @@
+"use client"
 import { cn } from '@/lib/utils'
 import { style } from '@/styles/style'
 import Computers from './canvas/Computers'
