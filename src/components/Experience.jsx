@@ -18,8 +18,12 @@ import { style } from "../styles/style";
 import { experiences } from "../constants";
 import SectionWrapper from "../hoc";
 import { textVariant } from "../utils/motion";
-import AnimatedDiv from "./AnimatedDiv";
 import Image from "next/image";
+
+
+const AnimatedDiv = dynamic(() => import("./AnimatedDiv"), {
+  ssr: false,
+});
 
 // Fix: Destructure `experience` from props
 const ExperienceCard = ({ experience }) => {

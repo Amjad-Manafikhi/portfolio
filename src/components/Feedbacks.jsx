@@ -4,7 +4,11 @@ import { style } from "../styles/style";
 import SectionWrapper from "../hoc";
 import { fadeIn, textVariant } from "../utils/motion";
 import { testimonials } from "../constants";
-import AnimatedDiv from "./AnimatedDiv";
+import dynamic from "next/dynamic";
+
+const AnimatedDiv = dynamic(() => import("./AnimatedDiv"), {
+  ssr: false,
+});
 
 const FeedbackCard = ({
   index,

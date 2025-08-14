@@ -1,6 +1,4 @@
 import React from "react";
-import AnimatedDiv from "./AnimatedDiv";
-import AnimatedP from "./AnimatedP";
 import { style } from "../styles/style";
 import { services } from "../constants";
 import SectionWrapper from "../hoc";
@@ -12,6 +10,13 @@ const Tilt = dynamic(() => import("react-parallax-tilt"), {
   ssr: false,
 });
 
+const AnimatedDiv = dynamic(() => import("./AnimatedDiv"), {
+  ssr: false,
+});
+
+const AnimatedP = dynamic(() => import("./AnimatedP"), {
+  ssr: false,
+});
 const ServiceCard = ({ index, title, icon }) => (
   <Tilt tiltReverse={true} className='xs:w-[250px] w-full'>
     <AnimatedDiv

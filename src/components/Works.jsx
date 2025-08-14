@@ -5,11 +5,17 @@ import SectionWrapper from "../hoc/";
 import { projects } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
 import Image from "next/image";
-import AnimatedDiv from "./AnimatedDiv";
-import AnimatedP from "./AnimatedP";
 
 import dynamic from 'next/dynamic';
 const Tilt = dynamic(() => import("react-parallax-tilt"), {
+  ssr: false,
+});
+
+const AnimatedDiv = dynamic(() => import("./AnimatedDiv"), {
+  ssr: false,
+});
+
+const AnimatedP = dynamic(() => import("./AnimatedP"), {
   ssr: false,
 });
 

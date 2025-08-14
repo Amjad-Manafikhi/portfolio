@@ -1,14 +1,21 @@
+// components/Contact.jsx
+
 import React, { useRef, useState } from "react";
 import { style } from "../styles/style";
 import SectionWrapper from "../hoc";
 import { slideIn } from "../utils/motion";
-import AnimatedDiv from "./AnimatedDiv";
-
 
 import dynamic from 'next/dynamic';
+
+// We've temporarily removed the dynamic import for AnimatedDiv
+// as we are using a standard <div> to test if the content renders.
+
 const EarthCanvas = dynamic(
-  () => import('./canvas').then((mod) => mod.EarthCanvas),
-  { ssr: false } // Set ssr: false to ensure the component is only rendered on the client side
+  () => import('./canvas/Earth'),
+  { 
+    ssr: false,
+    loading: () => <div className="text-white">Loading 3D model...</div>
+  }
 );
 
 const Contact = () => {
@@ -35,34 +42,18 @@ const Contact = () => {
     e.preventDefault();
     setLoading(true);
 
-    // console.log("great")
-    //   .then(
-    //     () => {
-    //       setLoading(false);
-    //       alert("Thank you. I will get back to you as soon as possible.");
-
-    //       setForm({
-    //         name: "",
-    //         email: "",
-    //         message: "",
-    //       });
-    //     },
-    //     (error) => {
-    //       setLoading(false);
-    //       console.error(error);
-
-    //       alert("Ahh, something went wrong. Please try again.");
-    //     }
-    //   );
-    setLoading(false)
+    // This is where you would typically make an API call
+    // For now, we'll just set loading to false.
+    setForm({ name: "", email: "", message: "" });
+    setLoading(false);
   };
 
   return (
     <div
       className={`xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden`}
     >
-      <AnimatedDiv
-        variants={slideIn("left", "tween", 0.2, 1)}
+      {/* Replaced AnimatedDiv with a standard div to isolate the problem */}
+      <div
         className='flex-[0.75] bg-black-100 p-8 rounded-2xl'
       >
         <p className={style.sectionSubText}>Get in touch</p>
@@ -114,14 +105,14 @@ const Contact = () => {
             {loading ? "Sending..." : "Send"}
           </button>
         </form>
-      </AnimatedDiv>
+      </div>
 
-      <AnimatedDiv
-        variants={slideIn("right", "tween", 0.2, 1)}
+      {/* Replaced AnimatedDiv with a standard div to isolate the problem */}
+      <div
         className='xl:flex-1 xl:h-auto md:h-[550px] h-[350px]'
       >
         <EarthCanvas />
-      </AnimatedDiv>
+      </div>
     </div>
   );
 };
