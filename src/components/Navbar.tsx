@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
-
+import { useRouter } from "next/router";
 import { style } from "../styles/style";
 import { navLinks } from "../constants";
 //import { logo, menu, close } from "../assets";
@@ -13,6 +13,7 @@ import { cn } from "@/lib/utils";
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const router=useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,16 +44,18 @@ const Navbar = () => {
           
   return (
     <nav
+    
       className={cn(style.paddingX,`w-full flex items-center justify-center box-border fixed top-0 z-20 ${
         scrolled ? "bg-primary" : "bg-transparent"
       }`)}
     >
       <div className='w-full flex justify-between items-center max-w-5xl m-auto'>
-        <Link
-          href='/'
+        <button
           className='flex items-center gap-2'
           onClick={() => {
-            window.scrollTo(0, 0);
+            const el = document.getElementById("hero");
+            if (el)  el.scrollIntoView({ behavior: "smooth" })
+            
           }}
         >
           <Image src={logo} alt='logo' className='w-9 h-9 object-contain' />
@@ -60,7 +63,7 @@ const Navbar = () => {
             Adrian &nbsp;
             <span className='sm:block hidden'> | JavaScript Mastery</span>
           </p>
-        </Link>
+        </button>
 
         <ul className='list-none hidden sm:flex flex-row gap-10'>
           {navLinksElements}

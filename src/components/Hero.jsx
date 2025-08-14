@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 const Hero = () => {
   return (
-    <div className={cn(style.paddingX,'w-full h-screen relative flex flex-col')}>
+    <div id="hero" className={cn(style.paddingX,'w-full h-screen relative flex flex-col')}>
       
       <div className='flex w-full pt-20 h-full gap-5'>
         <div className=' w-fit flex flex-col items-center justify-start'>

@@ -1,6 +1,9 @@
-import { Navbar, Hero, About, Experience, Tech, Works, Feedbacks, Contact, StarsCanvas } from "../components"
+import { Navbar, Hero, About, Experience, Tech, Works, Feedbacks, Contact } from "../components"
 
-
+import dynamic from 'next/dynamic';
+const StarsCanvas = dynamic(() => import("../components/canvas/Stars"), {
+  ssr: false,
+});
 
 export default function Home() {
    return (
