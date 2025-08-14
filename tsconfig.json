@@ -17,6 +17,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/utils/motion.js", "src/components/Experience.jsx", "src/pages/index.jsx", "src/hoc/index.jsx", "src/hoc/sectionWrapper.jsx"],
   "exclude": ["node_modules"]
 }
