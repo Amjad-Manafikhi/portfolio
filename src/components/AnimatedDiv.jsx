@@ -6,9 +6,6 @@ const AnimatedDiv = ({ children, variants, className }) => {
   return (
     <motion.div
       variants={variants}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.25 }}
       className={className}
     >
       {children}

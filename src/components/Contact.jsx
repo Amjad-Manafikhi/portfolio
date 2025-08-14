@@ -6,9 +6,13 @@ import SectionWrapper from "../hoc";
 import { slideIn } from "../utils/motion";
 
 import dynamic from 'next/dynamic';
-
-// We've temporarily removed the dynamic import for AnimatedDiv
-// as we are using a standard <div> to test if the content renders.
+const AnimatedDiv = dynamic(
+  () => import('./AnimatedDiv'),
+  { 
+    ssr: false,
+    loading: () => <div className="text-white">Loading animations...</div>
+  }
+);
 
 const EarthCanvas = dynamic(
   () => import('./canvas/Earth'),
@@ -44,16 +48,15 @@ const Contact = () => {
 
     // This is where you would typically make an API call
     // For now, we'll just set loading to false.
-    setForm({ name: "", email: "", message: "" });
     setLoading(false);
   };
-
+console.log("contacy")
   return (
     <div
       className={`xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden`}
     >
-      {/* Replaced AnimatedDiv with a standard div to isolate the problem */}
-      <div
+      <AnimatedDiv
+        variants={slideIn("left", "tween", 0.2, 1)}
         className='flex-[0.75] bg-black-100 p-8 rounded-2xl'
       >
         <p className={style.sectionSubText}>Get in touch</p>
@@ -105,14 +108,14 @@ const Contact = () => {
             {loading ? "Sending..." : "Send"}
           </button>
         </form>
-      </div>
+      </AnimatedDiv>
 
-      {/* Replaced AnimatedDiv with a standard div to isolate the problem */}
-      <div
+      <AnimatedDiv
+        variants={slideIn("right", "tween", 0.2, 1)}
         className='xl:flex-1 xl:h-auto md:h-[550px] h-[350px]'
       >
         <EarthCanvas />
-      </div>
+      </AnimatedDiv>
     </div>
   );
 };
