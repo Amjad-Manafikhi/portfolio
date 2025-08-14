@@ -1,4 +1,3 @@
-'use client'
 
 import { Navbar, Hero, About, Experience, Tech, Works, Feedbacks, Contact } from "../components"
 

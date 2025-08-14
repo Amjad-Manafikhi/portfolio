@@ -1,8 +1,11 @@
-'use client'
-import React from "react";
-import { BallCanvas } from "./canvas";
+ import React from "react";
 import  SectionWrapper  from "../hoc";
 import { technologies } from "../constants";
+import dynamic from 'next/dynamic';
+
+const BallCanvas = dynamic(() => import("./canvas/Ball"), {
+  ssr: false,
+});
 
 const Tech = () => {
   return (

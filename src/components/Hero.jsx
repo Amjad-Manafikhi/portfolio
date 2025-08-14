@@ -1,8 +1,13 @@
-"use client"
+
 import { cn } from '@/lib/utils'
 import { style } from '@/styles/style'
-import Computers from './canvas/Computers'
-import { motion } from "framer-motion";
+import dynamic from 'next/dynamic';
+const Computers = dynamic(() => import("./canvas/Computers"), {
+  ssr: false,
+});
+const AnimatedDiv = dynamic(() => import("./AnimatedDiv"), {
+  ssr: false,
+});
 
 const Hero = () => {
   return (
@@ -24,7 +29,7 @@ const Hero = () => {
             <div className='m-auto absolute sm:bottom-4 bottom-20 left-0 right-0 w-full flex justify-center items-center'>
               <a href='#about'>
                 <div className='w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2'>
-                  <motion.div
+                  <AnimatedDiv
                     animate={{
                       y: [0, 24, 0],
                     }}

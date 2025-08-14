@@ -1,12 +1,8 @@
-'use client'
-
-
 import React from "react";
 import {
   // VerticalTimeline,
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
-import { motion } from "framer-motion";
 import { cn } from '@/lib/utils'
 
 // Dynamically import the VerticalTimeline and VerticalTimelineElement components
@@ -22,6 +18,7 @@ import { style } from "../styles/style";
 import { experiences } from "../constants";
 import SectionWrapper from "../hoc";
 import { textVariant } from "../utils/motion";
+import AnimatedDiv from "./AnimatedDiv";
 import Image from "next/image";
 
 // Fix: Destructure `experience` from props
@@ -75,14 +72,14 @@ const ExperienceCard = ({ experience }) => {
 const Experience = () => {
   return (
     <>
-      <motion.div variants={textVariant()}>
+      <AnimatedDiv variants={textVariant()}>
         <p className={cn(style.sectionSubText, 'text-center')}>
           What I have done so far
         </p>
         <h2 className={cn(style.sectionHeadText, 'text-center')}>
           Work Experience.
         </h2>
-      </motion.div>
+      </AnimatedDiv>
 
       <div>
         {experiences.length && (<VerticalTimeline >
