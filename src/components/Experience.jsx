@@ -18,6 +18,7 @@ import "react-vertical-timeline-component/style.min.css";
 import { style } from "../styles/style";
 import { experiences } from "../constants";
 import SectionWrapper from "../hoc";
+import { textVariant } from "@/utils/motion";
 import Image from "next/image";
 const AnimatedDiv = dynamic(
   () => import('./AnimatedDiv').then((mod) => mod.AnimatedDiv),
@@ -26,7 +27,7 @@ const AnimatedDiv = dynamic(
 
 const ExperienceCard = ({ experience }) => {
   return (
-    <VerticalTimelineElement
+    <div
       contentStyle={{
         background: "#1d1836",
         color: "#fff",
@@ -66,7 +67,7 @@ const ExperienceCard = ({ experience }) => {
           </li>
         ))}
       </ul>
-    </VerticalTimelineElement>
+    </div>
   );
 };
 
@@ -84,14 +85,14 @@ const Experience = () => {
 
       <div>
         {experiences.length && (
-          <VerticalTimeline>
+          <div>
             {experiences.map((experience, index) => (
               <ExperienceCard
                 key={`experience-${index}`}
                 experience={experience}
               />
             ))}
-          </VerticalTimeline>
+          </div>
         )}
       </div>
     </>
