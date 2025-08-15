@@ -18,15 +18,15 @@ const Tech = dynamic(() => import("../components/Tech"), {
 const Works = dynamic(() => import("../components/Works"), {
   ssr: false,
 });
-// const Feedbacks = dynamic(() => import("../components/Feedbacks"), {
-//   ssr: false,
-// });
-// const Contact = dynamic(() => import("../components/Contact"), {
-//   ssr: false,
-// });
-// const StarsCanvas = dynamic(() => import("../components/canvas/Stars"), {
-//   ssr: false,
-// });
+const Feedbacks = dynamic(() => import("../components/Feedbacks"), {
+  ssr: false,
+});
+const Contact = dynamic(() => import("../components/Contact"), {
+  ssr: false,
+});
+const StarsCanvas = dynamic(() => import("../components/canvas/Stars"), {
+  ssr: false,
+});
 
 export default function Home() {
    return (
@@ -39,11 +39,11 @@ export default function Home() {
         {/* <Experience /> */}
         <Tech />
         <Works />
-        {/* <Feedbacks />
+        <Feedbacks />
         <div className='relative z-0'>
           <Contact />
           <StarsCanvas />
-        </div> */}
+        </div>
       </div>
 
   );
