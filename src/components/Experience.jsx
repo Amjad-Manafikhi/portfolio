@@ -1,7 +1,7 @@
 import React from "react";
 import { cn } from '@/lib/utils'
 
-// Dynamically import only the VerticalTimeline component
+// Dynamically import both components from the library
 import dynamic from 'next/dynamic';
 const VerticalTimeline = dynamic(
   () => import('react-vertical-timeline-component').then((mod) => mod.VerticalTimeline),
@@ -18,12 +18,11 @@ import "react-vertical-timeline-component/style.min.css";
 import { style } from "../styles/style";
 import { experiences } from "../constants";
 import SectionWrapper from "../hoc";
-import { textVariant } from "../utils/motion";
 import Image from "next/image";
-
-const AnimatedDiv = dynamic(() => import("./AnimatedDiv"), {
-  ssr: false,
-});
+const AnimatedDiv = dynamic(
+  () => import('./AnimatedDiv').then((mod) => mod.AnimatedDiv),
+  { ssr: false }
+);
 
 const ExperienceCard = ({ experience }) => {
   return (
@@ -55,7 +54,7 @@ const ExperienceCard = ({ experience }) => {
         >
           {experience.company_name}
         </p>
-      </div>
+        </div>
 
       <ul className="mt-5 list-disc ml-5 space-y-2">
         {experience.points.map((point, index) => (
