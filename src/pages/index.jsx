@@ -9,15 +9,15 @@ const Hero = dynamic(() => import("../components/Hero"), {
 const About = dynamic(() => import("../components/About"), {
   ssr: false,
 });
-// const Experience = dynamic(() => import("../components/Experience"), {
-//   ssr: false,
-// });
-// const Tech = dynamic(() => import("../components/Tech"), {
-//   ssr: false,
-// });
-// const Works = dynamic(() => import("../components/Works"), {
-//   ssr: false,
-// });
+const Experience = dynamic(() => import("../components/Experience"), {
+  ssr: false,
+});
+const Tech = dynamic(() => import("../components/Tech"), {
+  ssr: false,
+});
+const Works = dynamic(() => import("../components/Works"), {
+  ssr: false,
+});
 // const Feedbacks = dynamic(() => import("../components/Feedbacks"), {
 //   ssr: false,
 // });
