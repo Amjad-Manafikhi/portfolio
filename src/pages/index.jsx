@@ -9,9 +9,9 @@ const Hero = dynamic(() => import("../components/Hero"), {
 const About = dynamic(() => import("../components/About"), {
   ssr: false,
 });
-const Experience = dynamic(() => import("../components/Experience"), {
-  ssr: false,
-});
+// const Experience = dynamic(() => import("../components/Experience"), {
+//   ssr: false,
+// });
 const Tech = dynamic(() => import("../components/Tech"), {
   ssr: false,
 });
@@ -36,7 +36,7 @@ export default function Home() {
           <Hero />
         </div>
         <About/>
-        <Experience />
+        {/* <Experience /> */}
         <Tech />
         <Works />
         {/* <Feedbacks />
