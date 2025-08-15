@@ -1,13 +1,15 @@
 import React from "react";
-import {
-  VerticalTimelineElement,
-} from "react-vertical-timeline-component";
 import { cn } from '@/lib/utils'
 
 // Dynamically import only the VerticalTimeline component
 import dynamic from 'next/dynamic';
 const VerticalTimeline = dynamic(
   () => import('react-vertical-timeline-component').then((mod) => mod.VerticalTimeline),
+  { ssr: false }
+);
+
+const VerticalTimelineElement = dynamic(
+  () => import('react-vertical-timeline-component').then((mod) => mod.VerticalTimelineElement),
   { ssr: false }
 );
 
