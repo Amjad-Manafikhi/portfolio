@@ -1,15 +1,14 @@
 import React from "react";
 import {
-  // VerticalTimeline,
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
 import { cn } from '@/lib/utils'
 
-// Dynamically import the VerticalTimeline and VerticalTimelineElement components
+// Dynamically import only the VerticalTimeline component
 import dynamic from 'next/dynamic';
 const VerticalTimeline = dynamic(
   () => import('react-vertical-timeline-component').then((mod) => mod.VerticalTimeline),
-  { ssr: false } // Set ssr: false to ensure the component is only rendered on the client side
+  { ssr: false }
 );
 
 import "react-vertical-timeline-component/style.min.css";
@@ -20,14 +19,11 @@ import SectionWrapper from "../hoc";
 import { textVariant } from "../utils/motion";
 import Image from "next/image";
 
-
 const AnimatedDiv = dynamic(() => import("./AnimatedDiv"), {
   ssr: false,
 });
 
-// Fix: Destructure `experience` from props
 const ExperienceCard = ({ experience }) => {
-
   return (
     <VerticalTimelineElement
       contentStyle={{
@@ -86,14 +82,16 @@ const Experience = () => {
       </AnimatedDiv>
 
       <div>
-        {experiences.length && (<VerticalTimeline >
-          {experiences.map((experience, index) => (
-            <ExperienceCard
-              key={`experience-${index}`}
-              experience={experience}
-            />
-          ))}
-        </VerticalTimeline>)}
+        {experiences.length && (
+          <VerticalTimeline>
+            {experiences.map((experience, index) => (
+              <ExperienceCard
+                key={`experience-${index}`}
+                experience={experience}
+              />
+            ))}
+          </VerticalTimeline>
+        )}
       </div>
     </>
   );
