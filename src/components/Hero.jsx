@@ -4,7 +4,7 @@ import { style } from '@/styles/style'
 import { mixVisibility, motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 const Computers = dynamic(() => import("./canvas/Computers"), {
   ssr: false,
 });
@@ -57,9 +57,11 @@ const Hero = () => {
             <h1 className={style.heroHeadText}>Hi, I'm <span className='text-[#915eff]'>Amjad</span></h1>
             <div className='flex justify-between gap-4 items-center'>
 
-              <p className={cn(style.heroSubText,'mt-2 text-white-100')}>I’m a Full-Stack Developer with a strong focus on <span className='font-extrabold '>Frontend</span> development</p>
+              <p className={cn(style.heroSubText,'mt-2 text-white-100')}>I'm a Full-Stack Developer with a strong focus on <span className='font-extrabold '>Frontend</span> development</p>
               <div className='flex gap-2 justify-center items-center'>
-                <button
+                <a
+                  href="/Amjad_Manafikhi_CV.pdf"
+                  download="Amjad_Manafikhi_CV.pdf"
                   onClick={download} 
                   className={` bg-[#00CDA7] rounded-md flex items-center justify-center w-36 h-10 cursor-pointer duration-700 ${loading ? "scale-105":""}`}>
                   <div
@@ -69,7 +71,7 @@ const Hero = () => {
                     <div className="w-5 h-5 border-2 border-white border-t-black  border-r-black rounded-full animate-spin"></div>
                     ) : ("Download CV")
                   }
-                </button>
+                </a>
                 <Link href="/#projects" className='bg-[#915eff] rounded-md flex items-center justify-center w-36 h-10 cursor-pointer'>See Projects</Link>
               </div>
             </div>
