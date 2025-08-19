@@ -37,13 +37,13 @@ export default function Home() {
         </div>
         <About/>
         {/* <Experience /> */}
-        {/* <Tech />
-        <Works /> */}
+        <Tech />
+        <Works />
         {/* <Feedbacks /> */}
-        {/* <div className='relative z-0'>
+        <div className='relative z-0'>
           <Contact />
           <StarsCanvas />
-        </div> */}
+        </div>
       </div>
 
   );
