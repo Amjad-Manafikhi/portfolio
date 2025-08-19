@@ -8,14 +8,17 @@
 
 @import "tailwindcss";
 
+/* --color-primary: #050816;
+  --color-secondary: #aaa6c3;
+  --color-tertiary: #151030; */
 
 @theme {
-  --color-primary: #050816;
-  --color-secondary: #aaa6c3;
-  --color-tertiary: #151030;
+  --color-primary: white;
+  --color-secondary: #151030;
+  --color-tertiary: #050816;
   --color-black-100: #100d25;
   --color-black-200: #090325;
-  --color-white-100: #f3f3f3;
+  --color-white-100: black;
 
   --shadow-card: 0px 35px 120px -15px #211e35;
 

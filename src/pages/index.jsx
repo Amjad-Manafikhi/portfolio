@@ -31,7 +31,7 @@ const StarsCanvas = dynamic(() => import("../components/canvas/Stars"), {
 export default function Home() {
    return (
       <div className='relative z-0 bg-primary w-full'>
-        <div style={{ backgroundImage: "var(--background-hero-pattern)" }} className="w-full bg-cover bg-no-repeat bg-center">
+        <div className="w-full ">
           <Navbar />
           <Hero />
         </div>
@@ -39,7 +39,7 @@ export default function Home() {
         <Experience />
         <Tech />
         <Works />
-        <Feedbacks />
+        {/* <Feedbacks /> */}
         <div className='relative z-0'>
           <Contact />
           <StarsCanvas />

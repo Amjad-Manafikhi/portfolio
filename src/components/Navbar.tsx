@@ -35,7 +35,7 @@ const Navbar = () => {
   const navLinksElements = navLinks.map((nav) => (
             <li
               key={nav.id}
-              className={` hover:text-white text-[18px] font-medium cursor-pointer`}
+              className={` text-secondary hover:opacity-80 text-[18px] font-medium cursor-pointer`}
             >
               <a href={`#${nav.id}`}>{nav.title}</a>
             </li>
@@ -45,7 +45,7 @@ const Navbar = () => {
   return (
     <nav
     
-      className={cn(style.paddingX,`w-full flex items-center justify-center box-border fixed top-0 z-20 ${
+      className={cn(style.paddingX,` shadow-md py-1 w-full flex items-center justify-center box-border fixed top-0 z-20 ${
         scrolled ? "bg-primary" : "bg-transparent"
       }`)}
     >
@@ -59,7 +59,7 @@ const Navbar = () => {
           }}
         >
           <Image src={logo} alt='logo' className='w-9 h-9 object-contain' />
-          <p className='text-white text-[18px] font-bold cursor-pointer flex '>
+          <p className='text-secondary text-[18px] font-bold cursor-pointer flex '>
             Amjad &nbsp;
             <span className='sm:block hidden'> Manafikhi</span>
           </p>

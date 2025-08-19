@@ -18,8 +18,8 @@ import "react-vertical-timeline-component/style.min.css";
 import { style } from "../styles/style";
 import { experiences } from "../constants";
 import SectionWrapper from "../hoc";
-import { textVariant } from "@/utils/motion";
 import Image from "next/image";
+import { textVariant } from "@/utils/motion";
 const AnimatedDiv = dynamic(
   () => import('./AnimatedDiv').then((mod) => mod.AnimatedDiv),
   { ssr: false }
@@ -27,12 +27,14 @@ const AnimatedDiv = dynamic(
 
 const ExperienceCard = ({ experience }) => {
   return (
-    <div
+    <VerticalTimelineElement
+
       contentStyle={{
-        background: "#1d1836",
-        color: "#fff",
+        background: "#DAB2FF",
+        color: "#151030",
+        borderRadius:"10px",
       }}
-      contentArrowStyle={{ borderRight: "7px solid #232631" }}
+      contentArrowStyle={{ borderLeft: "7px solid #151030 " }}
       date={experience.date}
       iconStyle={{ background: experience.iconBg }}
       icon={
@@ -48,7 +50,7 @@ const ExperienceCard = ({ experience }) => {
       }
     >
       <div>
-        <h3 className="text-white text-[24px] font-bold">{experience.title}</h3>
+        <h3 className="text-secondary text-[24px] font-bold">{experience.title}</h3>
         <p
           className="text-secondary text-[16px] font-semibold"
           style={{ margin: 0 }}
@@ -61,13 +63,13 @@ const ExperienceCard = ({ experience }) => {
         {experience.points.map((point, index) => (
           <li
             key={`experience-point-${index}`}
-            className="text-white-100 text-[14px] pl-1 tracking-wider"
+            className="text-secondary text-[14px] pl-1 tracking-wider"
           >
             {point}
           </li>
         ))}
       </ul>
-    </div>
+    </VerticalTimelineElement>
   );
 };
 
@@ -85,14 +87,14 @@ const Experience = () => {
 
       <div>
         {experiences.length && (
-          <div>
+          <VerticalTimeline lineColor="#151030">
             {experiences.map((experience, index) => (
               <ExperienceCard
                 key={`experience-${index}`}
                 experience={experience}
               />
             ))}
-          </div>
+          </VerticalTimeline>
         )}
       </div>
     </>

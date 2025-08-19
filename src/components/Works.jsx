@@ -28,10 +28,13 @@ const ProjectCard = ({
   source_code_link,
 }) => {
   return (
-    <AnimatedDiv variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
+    <AnimatedDiv 
+      variants={fadeIn( index % 2 === 1 ? 'up' : 'down', "spring", index * 0.5, 1)}
+      className={' green-pink-gradient p-[2px] rounded-[20px] shadow-card '}  
+    >
       <div
         
-        className='bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full hover:scale-103 duration-300'
+        className='bg-primary shadow-md  p-5 rounded-2xl sm:w-[360px] w-full '
       >
         <div className='relative w-full h-[230px]'>
           <Tilt tiltReverse={true}>
@@ -40,7 +43,7 @@ const ProjectCard = ({
                 src={image}
                 alt="project_image"
                 fill
-                className="object-cover rounded-2xl"
+                className="object-cover rounded-2xl shadow-2xl border-1 border-secondary"
               />
             </div>
 
@@ -62,8 +65,8 @@ const ProjectCard = ({
         </div>
 
         <div className='mt-5'>
-          <h3 className='text-white font-bold text-[24px]'>{name}</h3>
-          <p className='mt-2 text-secondary text-[14px]'>{description}</p>
+          <h3 className='text-secondary font-bold text-[24px]'>{name}</h3>
+          <p className='mt-2 text-secondary text-[16px]'>{description}</p>
         </div>
 
         <div className='mt-4 flex flex-wrap gap-2'>
@@ -111,4 +114,4 @@ const Works = () => {
   );
 };
 
-export default SectionWrapper(Works, "");
+export default SectionWrapper(Works, "projects");
