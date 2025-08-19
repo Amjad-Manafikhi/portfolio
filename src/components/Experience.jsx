@@ -1,104 +1,72 @@
+"use client";
 import React from "react";
-import { cn } from '@/lib/utils'
-
-// Dynamically import both components from the library
-import dynamic from 'next/dynamic';
-const VerticalTimeline = dynamic(
-  () => import('react-vertical-timeline-component').then((mod) => mod.VerticalTimeline),
-  { ssr: false }
-);
-
-const VerticalTimelineElement = dynamic(
-  () => import('react-vertical-timeline-component').then((mod) => mod.VerticalTimelineElement),
-  { ssr: false }
-);
-
-import "react-vertical-timeline-component/style.min.css";
-
-import { style } from "../styles/style";
-import { experiences } from "../constants";
-import SectionWrapper from "../hoc";
 import Image from "next/image";
-import { textVariant } from "@/utils/motion";
-const AnimatedDiv = dynamic(
-  () => import('./AnimatedDiv').then((mod) => mod.AnimatedDiv),
-  { ssr: false }
-);
+import { experiences } from "@/constants";
+import { fadeIn } from "@/utils/motion";
+import SectionWrapper from "@/hoc";
+import AnimatedDiv from "./AnimatedDiv";
 
-const ExperienceCard = ({ experience }) => {
+const TimelineCard = ({ experience, i }) => {
   return (
-    <VerticalTimelineElement
+      <AnimatedDiv
+      variants={fadeIn("right", "spring", i * 1, 0.75)}
+        className={` w-[100%] flex sm:${i%2?"flex-row":"flex-row-reverse"} items-center justify-between  mb-12`}
+      >
+    <div className={` w-[100%] flex sm:${i%2?"flex-row":"flex-row-reverse"} items-center justify-between  mb-12`}>
+    <div className={`hidden sm:flex  mb-12`}>  
+      
+    </div>
+    <div className={`sm:${i%2?"flex-row":"flex-row-reverse"} sm:w-[calc(50%+28px)] w-fit  flex items-start justify-start gap-3  mb-12`}>
 
-      contentStyle={{
-        background: "#DAB2FF",
-        color: "#151030",
-        borderRadius:"10px",
-      }}
-      contentArrowStyle={{ borderLeft: "7px solid #151030 " }}
-      date={experience.date}
-      iconStyle={{ background: experience.iconBg }}
-      icon={
-        <div className="flex justify-center items-center w-full h-full">
+      
+        <div className="relative z-10 flex items-center justify-center  self-center w-14 h-14 sm:mx-auto bg-white border-2 border-secondary rounded-full">
+          <div className={`absolute w-2 h-2 bg-wihte border-t-5 border-t-transparent border-b-5 border-b-transparent  ${i%2 ? "-right-3 border-l-8 border-l-secondary" : "-left-3 border-r-8 border-r-secondary" }`}>
+
+          </div>
           <Image
-            width={32}
-            height={32}
             src={experience.icon}
             alt={experience.company_name}
-            className="w-[60%] h-[60%] object-contain"
+            width={36}
+            height={36}
+            className="object-contain z-10 "
           />
         </div>
-      }
-    >
-      <div>
-        <h3 className="text-secondary text-[24px] font-bold">{experience.title}</h3>
-        <p
-          className="text-secondary text-[16px] font-semibold"
-          style={{ margin: 0 }}
-        >
-          {experience.company_name}
-        </p>
-        </div>
 
-      <ul className="mt-5 list-disc ml-5 space-y-2">
-        {experience.points.map((point, index) => (
-          <li
-            key={`experience-point-${index}`}
-            className="text-secondary text-[14px] pl-1 tracking-wider"
-          >
-            {point}
-          </li>
-        ))}
-      </ul>
-    </VerticalTimelineElement>
+        {/* Card Content */}
+        <div className={`bg-purple-300 p-5 rounded-xl shadow-md flex-1 `}>
+          <h3 className="text-xl font-bold text-gray-900">{experience.title}</h3>
+          <p className="text-sm font-semibold text-gray-700">
+            {experience.company_name}
+          </p>
+          <p className="text-xs text-gray-600 mb-3">{experience.date}</p>
+
+          <ul className="list-disc ml-5 space-y-1 text-gray-800 text-sm">
+            {experience.points.map((point, pointIndex) => (
+              <li key={pointIndex}>{point}</li>
+            ))}
+          </ul>
+        </div>
+    </div>
+</div>
+      </AnimatedDiv>
   );
 };
 
 const Experience = () => {
   return (
-    <>
-      <AnimatedDiv variants={textVariant()}>
-        <p className={cn(style.sectionSubText, 'text-center')}>
-          What I have done so far
-        </p>
-        <h2 className={cn(style.sectionHeadText, 'text-center')}>
-          Work Experience.
-        </h2>
-      </AnimatedDiv>
+    <div className="relative max-w-5xl mx-auto py-10">
+      <h2 className="text-3xl font-bold text-center mb-10 text-gray-900">Work Experience</h2>
+      <div className="w-full relative">
 
-      <div>
-        {experiences.length && (
-          <VerticalTimeline lineColor="#151030">
-            {experiences.map((experience, index) => (
-              <ExperienceCard
-                key={`experience-${index}`}
-                experience={experience}
-              />
-            ))}
-          </VerticalTimeline>
-        )}
+        <div className="border-1 h-full  absolute left-0 sm:left-[50%] z-5 border-secondary"></div>
+          {experiences.length > 0 && experiences.map((exp, i) => (
+            
+            <TimelineCard key={i} experience={exp} i={i} />
+            
+          ))}
       </div>
-    </>
+    </div>
   );
 };
 
-export default SectionWrapper(Experience, "work");
+export default SectionWrapper(Experience,"");
