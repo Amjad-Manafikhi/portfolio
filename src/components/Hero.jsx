@@ -4,7 +4,7 @@ import { style } from '@/styles/style'
 import { mixVisibility, motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 const Computers = dynamic(() => import("./canvas/Computers"), {
   ssr: false,
 });
@@ -12,7 +12,31 @@ const AnimatedDiv = dynamic(() => import("./AnimatedDiv"), {
   ssr: false,
 });
 
+
+
 const Hero = () => {
+  const [isMobile, setIsMobile] = useState(false);
+  
+    useEffect(() => {
+      // Add a listener for changes to the screen size
+      const mediaQuery = window.matchMedia("(max-width: 500px)");
+  
+      // Set the initial value of the `isMobile` state variable
+      setIsMobile(mediaQuery.matches);
+  
+      // Define a callback function to handle changes to the media query
+      const handleMediaQueryChange = (event) => {
+        setIsMobile(event.matches);
+      };
+  
+      // Add the callback function as a listener for changes to the media query
+      mediaQuery.addEventListener("change", handleMediaQueryChange);
+  
+      // Remove the listener when the component is unmounted
+      return () => {
+        mediaQuery.removeEventListener("change", handleMediaQueryChange);
+      };
+    }, []);
   const [loading, setLoading] = useState(false);
   function download(){
     setLoading(true)
@@ -55,10 +79,10 @@ const Hero = () => {
 
           <div>
             <h1 className={style.heroHeadText}>Hi, I'm <span className='text-[#915eff]'>Amjad</span></h1>
-            <div className='flex justify-between gap-4 items-center'>
+            <div className='flex flex-col sm:flex-row justify-between gap-4 items-center'>
 
               <p className={cn(style.heroSubText,'mt-2 text-white-100')}>I'm a Full-Stack Developer with a strong focus on <span className='font-extrabold '>Frontend</span> development</p>
-              <div className='flex gap-2 justify-center items-center'>
+              <div className='flex gap-2 justify-center items-center sm:flex-row flex-col'>
                 <a
                   href="/Amjad_Manafikhi_CV.pdf"
                   download="Amjad_Manafikhi_CV.pdf"
@@ -78,10 +102,10 @@ const Hero = () => {
           </div>
           <div className='w-full h-full m-0 p-0'>
             <Computers className="" />
-            <div className='m-auto absolute sm:bottom-4 bottom-20 left-0 right-0 w-full flex justify-center items-center'>
+            {isMobile && <div className='m-auto absolute sm:bottom-4 bottom-20 left-0 right-0 w-full flex justify-center items-center'>
               <a href='#about'>
                 <div className='w-[35px] h-[64px] rounded-3xl border-4 border-[#915eff] flex justify-center items-start p-2'>
-                  <AnimatedDiv
+                  <motion.div
                     animate={{
                       y: [0, 24, 0],
                     }}
@@ -94,7 +118,7 @@ const Hero = () => {
                   />
                 </div>
               </a>
-            </div>
+            </div>}
           </div>
         </div>
       </div>

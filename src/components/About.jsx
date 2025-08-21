@@ -52,7 +52,7 @@ const About = () => {
 
       <AnimatedP
         variants={fadeIn("", "", 0.1, 1)}
-        className='mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]'
+        className='text-secondary text-[17px] max-w-3xl leading-[30px]'
       >
         I'm a skilled software developer with strong expertise in TypeScript, JavaScript, 
         and C++ (competitive programming). I specialize in modern frameworks like Next.js, 
