@@ -5,6 +5,7 @@ import SectionWrapper from "../hoc/";
 import { projects } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
 import Image from "next/image";
+import { GiEarthAfricaEurope } from "react-icons/gi";
 
 import dynamic from 'next/dynamic';
 const Tilt = dynamic(() => import("react-parallax-tilt"), {
@@ -26,11 +27,12 @@ const ProjectCard = ({
   tags,
   image,
   source_code_link,
+  demo_link,
 }) => {
   return (
     <AnimatedDiv 
       variants={fadeIn( index % 2 === 1 ? 'up' : 'down', "spring", index * 0.5, 1)}
-      className={' green-pink-gradient p-[2px] rounded-[20px] shadow-card '}  
+      className={' green-pink-gradient p-[2px] h-fit rounded-[20px] shadow-card '}  
     >
       <div
         
@@ -38,21 +40,24 @@ const ProjectCard = ({
       >
         <div className='relative w-full h-[230px]'>
           <Tilt tiltReverse={true}>
-            <div className="relative w-[320px] h-[227px]">
+            <div className="relative w-[320px] h-[200px]">
               <Image
                 src={image}
                 alt="project_image"
                 fill
                 className="object-cover rounded-2xl shadow-2xl border-1 border-secondary"
               />
+              
             </div>
 
-          </Tilt>
 
-          <div className='absolute top-2 right-2 flex justify-end m-3 card-img_hover'>
+          </Tilt>
+          
+
+          <div className='absolute top-36 right-0 flex justify-end m-3 card-img_hover'>
             <div
               onClick={() => window.open(source_code_link, "_blank")}
-              className='black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer'
+              className='bg-black w-10 h-10 rounded-full flex justify-center items-center cursor-pointer'
             >
               <Image
                 fill
@@ -61,6 +66,19 @@ const ProjectCard = ({
                 className='w-1/2 h-1/2 object-contain'
               />
             </div>
+            
+          </div>
+          <div className='absolute top-36 right-[48px] flex justify-end m-3 card-img_hover'>
+            <div
+              onClick={() => window.open(demo_link, "_blank")}
+              className='bg-white w-10 h-10 rounded-full flex border-4 border-black  justify-center items-center cursor-pointer'
+            >
+              <GiEarthAfricaEurope
+                fill
+                className='w-full h-full object-contain'
+              />
+            </div>
+            
           </div>
         </div>
 

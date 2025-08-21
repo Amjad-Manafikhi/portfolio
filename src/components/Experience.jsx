@@ -9,7 +9,7 @@ import AnimatedDiv from "./AnimatedDiv";
 const TimelineCard = ({ experience, i }) => {
   return (
       <AnimatedDiv
-      variants={fadeIn("right", "spring", i * 1, 0.75)}
+      variants={fadeIn("right", "spring", i * 0.5, 0.75)}
         className={` w-[100%] flex sm:${i%2?"flex-row":"flex-row-reverse"} items-center justify-between  mb-12`}
       >
     <div className={` w-[100%] flex sm:${i%2?"flex-row":"flex-row-reverse"} items-center justify-between  mb-12`}>
@@ -20,7 +20,7 @@ const TimelineCard = ({ experience, i }) => {
 
       
         <div className="relative z-10 flex items-center justify-center  self-center w-14 h-14 sm:mx-auto bg-white border-2 border-secondary rounded-full">
-          <div className={`absolute w-2 h-2 bg-wihte border-t-5 border-t-transparent border-b-5 border-b-transparent  ${i%2 ? "-right-3 border-l-8 border-l-secondary" : "-left-3 border-r-8 border-r-secondary" }`}>
+          <div className={`hidden sm:block absolute w-2 h-2 bg-wihte border-t-5 border-t-transparent border-b-5 border-b-transparent  ${i%2 ? "-right-3 border-l-8 border-l-secondary" : "-left-3 border-r-8 border-r-secondary" }`}>
 
           </div>
           <Image
@@ -69,4 +69,4 @@ const Experience = () => {
   );
 };
 
-export default SectionWrapper(Experience,"");
+export default SectionWrapper(Experience,"work");

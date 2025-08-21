@@ -45,11 +45,11 @@ const Navbar = () => {
   return (
     <nav
     
-      className={cn(style.paddingX,` shadow-md py-1 w-full flex items-center justify-center box-border fixed top-0 z-20 ${
+      className={cn(style.paddingX,` shadow-md py-1 w-full min-h-10 flex items-center justify-center box-border fixed top-0 z-20 ${
         scrolled ? "bg-primary" : "bg-transparent"
       }`)}
     >
-      <div className='w-full flex justify-between items-center max-w-5xl m-auto'>
+      <div className='w-full flex justify-between items-center max-w-7xl m-auto'>
         <button
           className='flex items-center gap-2'
           onClick={() => {
@@ -58,7 +58,7 @@ const Navbar = () => {
             
           }}
         >
-          <Image src={logo} alt='logo' className='w-9 h-9 object-contain' />
+          {/* <Image src={logo} alt='logo' className='w-9 h-9 object-contain' /> */}
           <p className='text-secondary text-[18px] font-bold cursor-pointer flex '>
             Amjad &nbsp;
             <span className='sm:block hidden'> Manafikhi</span>
