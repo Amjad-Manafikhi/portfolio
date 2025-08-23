@@ -25,7 +25,7 @@ import mysql from "./tech/mysql.png"
 
 import meta from "./company/meta.png";
 import shopify from "./company/shopify.png";
-import starbucks from "./company/starbucks.png";
+import zahabi from "./company/zahabi.png";
 import tesla from "./company/tesla.png";
 
 import dentist from "./dentist.png";
@@ -56,7 +56,7 @@ export {
   threejs,
   meta,
   shopify,
-  starbucks,
+  zahabi,
   tesla,
   dentist,
   newsapp,

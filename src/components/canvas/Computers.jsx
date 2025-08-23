@@ -7,6 +7,8 @@ import CanvasLoader from "../Loader";
 const Computers = ({ isMobile }) => {
   const computer = useGLTF("./desktop_pc/scene.gltf");
 
+  
+
   return (
     <mesh>
       <hemisphereLight intensity={3} groundColor="#915EFF" />
@@ -33,6 +35,46 @@ const Computers = ({ isMobile }) => {
   );
 };
 const ComputersCanvas = () => {
+  const [rotation, setRotation] = useState({rotate:true,speed:5});
+  const [isLoaded, setIsLoaded] = useState(false);
+ 
+  useEffect(() => {
+    // This effect's code will only run when 'isLoaded' changes to true.
+    if (isLoaded) {
+      console.log('isLoaded is true. Starting the animation...');
+      
+      // Step 1: Move left for 1s.
+      // After 2 seconds, set the rotation to a negative speed.
+      const timer1 = setTimeout(() => {
+        setRotation({ rotate: true, speed: -5 });
+        console.log('Moving left...');
+      }, 2000); 
+
+      // Step 2: Move right for 2s.
+      // After 2 more seconds (4s total), set the rotation to a positive speed.
+      const timer2 = setTimeout(() => {
+        setRotation({ rotate: true, speed: 5 });
+        console.log('Moving right...');
+      }, 4000);
+
+      // Step 3: Move back to the left for 1s.
+      // After 1 more second (5s total), stop the rotation.
+      const timer3 = setTimeout(() => {
+        setRotation({ rotate: false, speed: 0 });
+        console.log('Moving back left and stopping...');
+      }, 5000);
+      
+      // We return a cleanup function to clear all timers.
+      // This is crucial to prevent memory leaks if the component unmounts.
+      return () => {
+        clearTimeout(timer1);
+        clearTimeout(timer2);
+        clearTimeout(timer3);
+      };
+    }
+  }, [isLoaded]); // This dependency array ensures the effect runs only when isLoaded changes.
+
+  console.log(rotation)
   
   const [isMobile, setIsMobile] = useState(false);
 
@@ -65,8 +107,11 @@ const ComputersCanvas = () => {
       camera={{ position: [20, 3, 2], fov: 25 }}
       gl={{ preserveDrawingBuffer: true }}
       >
-      <Suspense fallback={<CanvasLoader />}>
+      {!isLoaded && <CanvasLoader isComputer={true} isLoaded={isLoaded} setIsLoaded={setIsLoaded} />}
+      <Suspense fallback={null}>
         <OrbitControls
+          autoRotate={rotation.rotate}
+          autoRotateSpeed={rotation.speed}
           enableZoom={false}
           enablePan={false}
           maxPolarAngle={Math.PI / 2}

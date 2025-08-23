@@ -57,7 +57,7 @@ console.log("contacy")
     >
       <AnimatedDiv
         variants={slideIn("left", "tween", 0.2, 1)}
-        className='flex-[0.75] white p-8 rounded-2xl border-1 border-secondary '
+        className='flex-[0.75] white p-6 rounded-2xl border-1 border-secondary '
       >
         <p className={style.sectionSubText}>Get in touch</p>
         <h3 className={style.sectionHeadText}>Contact.</h3>
@@ -65,7 +65,7 @@ console.log("contacy")
         <form
           ref={formRef}
           onSubmit={handleSubmit}
-          className='mt-12 flex flex-col gap-8'
+          className='mt-6 flex flex-col gap-3'
         >
           <label className='flex flex-col'>
             <span className='text-white font-medium'>Your Name</span>
@@ -74,7 +74,7 @@ console.log("contacy")
               name='name'
               value={form.name}
               onChange={handleChange}
-              placeholder="What's your good name?"
+              placeholder="Name"
               className='bg-purple-300 py-4 px-6 placeholder:text-secondary placeholder:opacity-50 text-secondary rounded-lg outline-none border-none font-medium'
             />
           </label>
@@ -85,25 +85,25 @@ console.log("contacy")
               name='email'
               value={form.email}
               onChange={handleChange}
-              placeholder="What's your web address?"
+              placeholder="Email"
               className='bg-purple-300 py-4 px-6 placeholder:text-secondary placeholder:opacity-50 text-secondary rounded-lg outline-none border-none font-medium'
             />
           </label>
           <label className='flex flex-col'>
             <span className='text-white font-medium '>Your Message</span>
             <textarea
-              rows={7}
+              rows={5}
               name='message'
               value={form.message}
               onChange={handleChange}
-              placeholder='What you want to say?'
+              placeholder='Message'
               className='bg-purple-300 py-4 px-6 placeholder:text-secondary placeholder:opacity-50 text-secondary rounded-lg outline-none border-none font-medium'
             />
           </label>
 
           <button
             type='submit'
-            className='bg-purple-300 py-3 px-8 rounded-xl outline-none w-fit text-secondary font-bold shadow-md shadow-primary'
+            className='bg-purple-300 py-3 px-8 my-2 rounded-xl outline-none w-fit text-secondary font-bold shadow-md shadow-primary'
           >
             {loading ? "Sending..." : "Send"}
           </button>
@@ -114,6 +114,7 @@ console.log("contacy")
         variants={slideIn("right", "tween", 0.2, 1)}
         className='xl:flex-1 xl:h-auto md:h-[550px] h-[350px]'
       >
+        
         <EarthCanvas />
       </AnimatedDiv>
     </div>

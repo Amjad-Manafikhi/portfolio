@@ -6,6 +6,7 @@ import { projects } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
 import Image from "next/image";
 import { GiEarthAfricaEurope } from "react-icons/gi";
+import {motion} from 'framer-motion'
 
 import dynamic from 'next/dynamic';
 const Tilt = dynamic(() => import("react-parallax-tilt"), {
@@ -32,7 +33,7 @@ const ProjectCard = ({
   return (
     <AnimatedDiv 
       variants={fadeIn( index % 2 === 1 ? 'up' : 'down', "spring", index * 0.5, 1)}
-      className={' green-pink-gradient p-[2px] h-fit rounded-[20px] shadow-card '}  
+      className={' green-pink-gradient p-[2px] h-fit rounded-[20px] shadow-2xl '}  
     >
       <div
         
@@ -53,38 +54,48 @@ const ProjectCard = ({
 
           </Tilt>
           
+          <motion.div
+            variants={fadeIn( 'right', "spring", 1.5, 0.5)}
+            className={'  w-fit h-fit absolute top-38 right-2 shadow-card '}  
+          >
+            <div className="flex gap-3">
 
-          <div className='absolute top-36 right-0 flex justify-end m-3 card-img_hover'>
-            <div
-              onClick={() => window.open(source_code_link, "_blank")}
-              className='bg-black w-10 h-10 rounded-full flex justify-center items-center cursor-pointer'
-            >
-              <Image
-                fill
-                src={github}
-                alt='source code'
-                className='w-1/2 h-1/2 object-contain'
-              />
+
+              <div className=' flex card-img_hover items-center justify-center'>
+                <div
+                  onClick={() => window.open(source_code_link, "_blank")}
+                  className='bg-black border-4 border-[#915eff] w-10 h-10 rounded-full relative cursor-pointer'
+                >
+                  <Image
+                    fill
+                    src={github}
+                    alt='source code'
+                    className='object-contain flex'
+                  />
+                </div>
+                
+              </div>
+              <div className='flex card-img_hover'>
+                <div
+                  onClick={() => window.open(demo_link, "_blank")}
+                  className='bg-white w-10 h-10 rounded-full flex border-4 border-[#915eff]  justify-center items-center cursor-pointer'
+                >
+                  <GiEarthAfricaEurope
+                    fill
+                    className='w-full h-full object-contain'
+                    />
+                </div>
+                
+              </div>
             </div>
-            
-          </div>
-          <div className='absolute top-36 right-[48px] flex justify-end m-3 card-img_hover'>
-            <div
-              onClick={() => window.open(demo_link, "_blank")}
-              className='bg-white w-10 h-10 rounded-full flex border-4 border-black  justify-center items-center cursor-pointer'
-            >
-              <GiEarthAfricaEurope
-                fill
-                className='w-full h-full object-contain'
-              />
-            </div>
-            
-          </div>
+          </motion.div>
         </div>
 
         <div className='mt-5'>
           <h3 className='text-secondary font-bold text-[24px]'>{name}</h3>
-          <p className='mt-2 text-secondary text-[16px]'>{description}</p>
+          <div className=" hover:z-4 hover:scale-130 hover:bg-purple-200 hover:shadow-2xl p-2 rounded-lg duration-400 my-3">
+            <p className='mt-2 text-secondary text-[16px] line-clamp-5 hover:line-clamp-none hover:whitespace-normal hover:overflow-visible hover:text-clip'>{description}</p>
+          </div>
         </div>
 
         <div className='mt-4 flex flex-wrap gap-2'>
