@@ -33,7 +33,7 @@ const ProjectCard = ({
   return (
     <AnimatedDiv 
       variants={fadeIn( index % 2 === 1 ? 'up' : 'down', "spring", index * 0.5, 1)}
-      className={' green-pink-gradient p-[2px] h-fit rounded-[20px] shadow-2xl '}  
+      className={' green-pink-gradient p-[2px] h-fit rounded-[20px] shadow-2xl duration-200 '}  
     >
       <div
         
@@ -93,7 +93,7 @@ const ProjectCard = ({
 
         <div className='mt-5'>
           <h3 className='text-secondary font-bold text-[24px]'>{name}</h3>
-          <div className=" hover:z-4 hover:scale-130 hover:bg-purple-200 hover:shadow-2xl p-2 rounded-lg duration-400 my-3">
+          <div className=" p-2  my-3">
             <p className='mt-2 text-secondary text-[16px] line-clamp-5 hover:line-clamp-none hover:whitespace-normal hover:overflow-visible hover:text-clip'>{description}</p>
           </div>
         </div>
