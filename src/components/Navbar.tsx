@@ -3,10 +3,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { style } from "../styles/style";
 import { navLinks } from "../constants";
-//import { logo, menu, close } from "../assets";
-import logo from "../assets/logo.svg"
-import menu from "../assets/menu.svg"
-import close from "../assets/close.svg"
+import { RxHamburgerMenu } from "react-icons/rx";
+import { IoMdClose } from "react-icons/io";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
@@ -35,7 +33,7 @@ const Navbar = () => {
   const navLinksElements = navLinks.map((nav) => (
             <li
               key={nav.id}
-              className={` text-secondary hover:opacity-80 text-[18px] font-medium cursor-pointer`}
+              className={` text-secondary hover:opacity-80 text-[14px] sm:text-[18px] font-medium cursor-pointer`}
             >
               <a href={`#${nav.id}`}>{nav.title}</a>
             </li>
@@ -67,18 +65,26 @@ const Navbar = () => {
           {navLinksElements}
         </ul>
 
-        <div className='sm:hidden flex flex-1 justify-end items-center'>
-          <Image
-            src={toggle ? close : menu}
-            alt='menu'
-            className='w-[28px] h-[28px] object-contain'
-            onClick={() => setToggle(!toggle)}
-          />
-
+        <div 
+          className={`sm:hidden z-15 flex items-center p-2 hover:bg-purple-200 rounded-full transition-all duration-300 ease-in-out transform hover:scale-110`}
+        >
+         
+         {toggle ? (
+            <IoMdClose 
+              onClick={() => setToggle(prev => !prev)} 
+              className="w-[28px] h-[28px] text-secondary z-10" 
+            />
+          ) : (
+            <RxHamburgerMenu 
+              onClick={() => setToggle(prev => !prev)} 
+              className="w-[28px] h-[28px] text-secondary z-10" 
+            />
+          )}
           <div
-            className={`${
-              !toggle ? "hidden" : "flex"
-            } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
+
+            className={`absolute  -ml-8  ${
+              toggle ? 'h-30 mt-34 z-0' : 'h-0 p-0 -z-18 -mt-14'
+            } bg-white shadow-lg overflow-hidden py-1 px-3 duration-200 ease-in-out  rounded-md`}
           >
             <ul className='list-none flex justify-end items-start flex-1 flex-col gap-4'>
               {navLinksElements}
