@@ -45,7 +45,7 @@ const Navbar = () => {
   return (
     <nav
     
-      className={cn(style.paddingX,` shadow-md py-1 w-full min-h-10 flex items-center justify-center box-border fixed top-0 z-20 bg-primary
+      className={cn(style.paddingX,` shadow-md py-1 w-full min-h-10 flex items-center justify-center box-border fixed top-0 z-10 bg-primary
       }`)}
     >
       <div className='w-full flex justify-between items-center max-w-7xl m-auto'>

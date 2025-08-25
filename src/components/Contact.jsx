@@ -4,7 +4,7 @@ import React, { useRef, useState } from "react";
 import { style } from "../styles/style";
 import SectionWrapper from "../hoc";
 import { slideIn } from "../utils/motion";
-import toast, { Toaster } from 'react-hot-toast'
+import toast from 'react-hot-toast'
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -77,70 +77,72 @@ const Contact = () => {
   }
 };
   return (
-    <div
-      className={`xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden`}
-    >
-      <div className="z-21"><Toaster className="z-100"/></div>
-      <AnimatedDiv
-        variants={slideIn("left", "tween", 0.2, 1)}
-        className='flex-[0.75] white p-6 rounded-2xl border-1 border-secondary '
+    <>
+    
+      <div
+        className={`xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden`}
       >
-        <p className={style.sectionSubText}>Get in touch</p>
-        <h3 className={style.sectionHeadText}>Contact.</h3>
-
-        <form
-          ref={formRef}
-          onSubmit={handleSubmit(onSubmit)}
-          className='mt-6 flex flex-col gap-3'
+        <AnimatedDiv
+          variants={slideIn("left", "tween", 0.2, 1)}
+          className='flex-[0.75] white p-6 rounded-2xl border-1 border-secondary '
         >
-          <label className='flex flex-col'>
-            <span className='text-secondary font-medium'>Name</span>
-            <input
-              type='text'
-              placeholder="Name"
-              className='bg-purple-300 py-4 px-6 placeholder:text-secondary placeholder:opacity-50 text-secondary rounded-lg outline-none border-none font-medium'
-              {...register('name')}
-            />
-            {errors.name && <p className="text-red-500 text-sm">{errors.name.message}</p>}
-          </label>
-          <label className='flex flex-col'>
-            <span className='text-secondary font-medium'>Email</span>
-            <input
-              type='email'
-              placeholder="Email"
-              className='bg-purple-300 py-4 px-6 placeholder:text-secondary placeholder:opacity-50 text-secondary rounded-lg outline-none border-none font-medium'
-              {...register('email')}
-            />
-            {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
-          </label>
-          <label className='flex flex-col'>
-            <span className='text-secondary font-medium '>Message</span>
-            <textarea
-              rows={5}
-              placeholder='Message'
-              className='bg-purple-300 py-4 px-6 placeholder:text-secondary placeholder:opacity-50 text-secondary rounded-lg outline-none border-none font-medium'
-              {...register('message')}
-           />
-            {errors.message && <p className="text-red-500 text-sm">{errors.message.message}</p>}
-          </label>
+          <p className={style.sectionSubText}>Get in touch</p>
+          <h3 className={style.sectionHeadText}>Contact.</h3>
 
-          <button
-            type='submit'
-            className='bg-purple-300 py-3 px-8 my-2 rounded-xl outline-none w-fit text-secondary font-bold shadow-md shadow-primary'
+          <form
+            ref={formRef}
+            onSubmit={handleSubmit(onSubmit)}
+            className='mt-6 flex flex-col gap-3'
           >
-            {loading ? "Sending..." : "Send"}
-          </button>
-        </form>
-      </AnimatedDiv>
+            <label className='flex flex-col'>
+              <span className='text-secondary font-medium'>Name</span>
+              <input
+                type='text'
+                placeholder="Name"
+                className='bg-purple-300 py-4 px-6 placeholder:text-secondary placeholder:opacity-50 text-secondary rounded-lg outline-none border-none font-medium'
+                {...register('name')}
+              />
+              {errors.name && <p className="text-red-500 text-sm">{errors.name.message}</p>}
+            </label>
+            <label className='flex flex-col'>
+              <span className='text-secondary font-medium'>Email</span>
+              <input
+                type='email'
+                placeholder="Email"
+                className='bg-purple-300 py-4 px-6 placeholder:text-secondary placeholder:opacity-50 text-secondary rounded-lg outline-none border-none font-medium'
+                {...register('email')}
+              />
+              {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
+            </label>
+            <label className='flex flex-col'>
+              <span className='text-secondary font-medium '>Message</span>
+              <textarea
+                rows={5}
+                placeholder='Message'
+                className='bg-purple-300 py-4 px-6 placeholder:text-secondary placeholder:opacity-50 text-secondary rounded-lg outline-none border-none font-medium'
+                {...register('message')}
+            />
+              {errors.message && <p className="text-red-500 text-sm">{errors.message.message}</p>}
+            </label>
 
-      <AnimatedDiv
-        variants={slideIn("right", "tween", 0.2, 1)}
-        className='xl:flex-1 xl:h-auto md:h-[550px] h-[350px]'
-      >
-        
-        <EarthCanvas />
-      </AnimatedDiv>
-    </div>
+            <button
+              type='submit'
+              className='bg-purple-300 py-3 px-8 my-2 rounded-xl outline-none w-fit text-secondary font-bold shadow-md shadow-primary'
+            >
+              {loading ? "Sending..." : "Send"}
+            </button>
+          </form>
+        </AnimatedDiv>
+
+        <AnimatedDiv
+          variants={slideIn("right", "tween", 0.2, 1)}
+          className='xl:flex-1 xl:h-auto md:h-[550px] h-[350px]'
+          >
+          
+          <EarthCanvas />
+        </AnimatedDiv>
+      </div>
+    </>
   );
 };
 
