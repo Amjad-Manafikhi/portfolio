@@ -80,7 +80,6 @@ const ProjectCard = ({
                   className='bg-white w-10 h-10 rounded-full flex border-4 border-[#915eff]  justify-center items-center cursor-pointer'
                 >
                   <GiEarthAfricaEurope
-                    fill
                     className='w-full h-full object-contain'
                     />
                 </div>
