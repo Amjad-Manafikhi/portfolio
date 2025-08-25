@@ -8,10 +8,6 @@ import { useEffect, useState } from 'react';
 const Computers = dynamic(() => import("./canvas/Computers"), {
   ssr: false,
 });
-const AnimatedDiv = dynamic(() => import("./AnimatedDiv"), {
-  ssr: false,
-});
-
 
 
 const Hero = () => {
@@ -70,56 +66,58 @@ const Hero = () => {
   return (
     <div id="hero" className={cn(style.paddingX,'w-full h-screen relative flex flex-col')}>
       
-      <div className='flex w-full pt-20 h-full gap-5'>
-        <div className=' w-fit flex flex-col items-center justify-start'>
-          <div className='w-4 h-4 bg-[#915eff] rounded-full '/>
-          <div className='w-1 sm:h-80 h-40 bg-[#915eff] violet-gradient '/>
-        </div>
-        <div className='flex flex-col h-full w-full'>
+      <div className='flex flex-col w-full pt-20 h-full gap-5'>
+        <div className='flex gap-4'>
+            <div className=' w-fit flex flex-col items-center justify-start mt-2'>
+              <div className='w-4 h-4 bg-[#915eff] rounded-full '/>
+              <div className='w-1 sm:h-40 h-40 bg-[#915eff] violet-gradient '/>
+            </div>
+            <div className='flex flex-col h-fit w-full'>
 
-          <div>
-            <h1 className={style.heroHeadText}>Hi, I'm <span className='text-[#915eff]'>Amjad</span></h1>
-            <div className='flex flex-col sm:flex-row justify-between gap-4 items-center'>
+              <div>
+                <h1 className={style.heroHeadText}>Hi, I'm <span className='text-[#915eff]'>Amjad</span></h1>
+                <div className='flex flex-col sm:flex-row justify-between gap-4 items-center'>
 
-              <p className={cn(style.heroSubText,'mt-2 text-white-100')}>I'm a Full-Stack Developer with a strong focus on <span className='font-extrabold '>Frontend</span> development</p>
-              <div className='flex gap-2 justify-center items-center sm:flex-row flex-col'>
-                <a
-                  href="/Amjad_Manafikhi_CV.pdf"
-                  download="Amjad_Manafikhi_CV.pdf"
-                  onClick={download} 
-                  className={` bg-[#00CDA7] rounded-md flex items-center justify-center w-36 h-10 cursor-pointer duration-700 ${loading ? "scale-105":""}`}>
-                  <div
-                    className={`hidden sm:inline w-8 h-10 bg-gray-500 absolute rounded-lg ${loading ? 'animate-spin translate-x-[250px] -translate-y-[300px] transition-all duration-700' : '-z-2 bg-transparent'}`}
-                  />
-                  {loading ? (
-                    <div className="w-5 h-5 border-2 border-white border-t-black  border-r-black rounded-full animate-spin"></div>
+                <p className={cn(style.heroSubText,'mt-2 text-white-100')}>I'm a Full-Stack Developer with a strong focus on <span className='font-extrabold '>Frontend</span> development</p>
+                <div className='flex gap-2 justify-center items-center sm:flex-row flex-col'>
+                  <a
+                    href="/Amjad_Manafikhi_CV.pdf"
+                    download="Amjad_Manafikhi_CV.pdf"
+                    onClick={download} 
+                    className={` bg-[#00CDA7] rounded-md flex items-center justify-center w-36 h-10 cursor-pointer duration-700 ${loading ? "scale-105":""}`}>
+                    <div
+                      className={`hidden sm:inline w-8 h-10 bg-gray-500 absolute rounded-lg ${loading ? 'animate-spin translate-x-[250px] -translate-y-[300px] transition-all duration-700' : '-z-2 bg-transparent'}`}
+                    />
+                    {loading ? (
+                      <div className="w-5 h-5 border-2 border-white border-t-black  border-r-black rounded-full animate-spin"></div>
                     ) : ("Download CV")
                   }
-                </a>
-                <Link href="/#projects" className='bg-[#915eff] rounded-md flex items-center justify-center w-36 h-10 cursor-pointer'>See Projects</Link>
+                  </a>
+                  <Link href="/#projects" className='bg-[#915eff] rounded-md flex items-center justify-center w-36 h-10 cursor-pointer'>See Projects</Link>
+                </div>
               </div>
             </div>
           </div>
-          <div className='w-full h-full m-0 p-0'>
-            <Computers className="" />
-            {isMobile && <div className='m-auto absolute sm:bottom-4 bottom-20 left-0 right-0 w-full flex justify-center items-center'>
-              <a href='#about'>
-                <div className='w-[35px] h-[64px] rounded-3xl border-4 border-[#915eff] flex justify-center items-start p-2'>
-                  <motion.div
-                    animate={{
-                      y: [0, 24, 0],
-                    }}
-                    transition={{
-                      duration: 1.5,
-                      repeat: Infinity,
-                      repeatType: "loop",
-                    }}
-                    className='w-3 h-3 rounded-full bg-[#915eff] mb-1'
-                  />
-                </div>
-              </a>
-            </div>}
-          </div>
+        </div>
+        <div className='w-full h-full m-0 p-0'>
+          <Computers className="" />
+          {isMobile && <div className='m-auto absolute sm:bottom-4 bottom-6 left-0 right-0 w-full flex justify-center items-center'>
+            <a href='#about'>
+              <div className='w-[30px] h-[54px] rounded-3xl border-3 border-[#915eff] flex justify-center items-start p-2'>
+                <motion.div
+                  animate={{
+                    y: [0, 24, 0],
+                  }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    repeatType: "loop",
+                  }}
+                  className='w-2 h-2 rounded-full bg-[#915eff] mb-1'
+                />
+              </div>
+            </a>
+          </div>}
         </div>
       </div>
 

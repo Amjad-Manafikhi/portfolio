@@ -10,7 +10,7 @@ const Computers = ({ isMobile }) => {
   
 
   return (
-    <mesh>
+    <mesh className={""}>
       <hemisphereLight intensity={3} groundColor="#915EFF" />
       <spotLight
         position={[-1, -3, 0.6]}
@@ -26,8 +26,8 @@ const Computers = ({ isMobile }) => {
       <group  position={[0, 1, 0.5]} rotation={[0, 0, 0]}>
         <primitive
           object={computer.scene}
-          scale={isMobile ? 0.6 : 1}
-          position={isMobile ? [0, -3, -2.2] : [0, -3.25, -1.5]}
+          scale={isMobile}
+          position={isMobile===0.5 ? [0, -2.25, -1.8] : [0, -3.25, -2]}
           rotation={[-0.01, -0.2, -0.1]}
         />
       </group>
@@ -76,26 +76,36 @@ const ComputersCanvas = () => {
 
   console.log(rotation)
   
-  const [isMobile, setIsMobile] = useState(false);
-
+  const [isMobile, setIsMobile] = useState(1);
+  console.log(isMobile)
   useEffect(() => {
     // Add a listener for changes to the screen size
-    const mediaQuery = window.matchMedia("(max-width: 500px)");
-
+    const mediaQueryMed = window.matchMedia("(max-width: 600px)");
+    const mediaQuerySm = window.matchMedia("(max-width: 400px)");
+    
     // Set the initial value of the `isMobile` state variable
-    setIsMobile(mediaQuery.matches);
-
+    if(mediaQueryMed.matches)setIsMobile(0.7);
+    if(mediaQuerySm.matches)setIsMobile(0.5);
     // Define a callback function to handle changes to the media query
-    const handleMediaQueryChange = (event) => {
-      setIsMobile(event.matches);
+    const handleMediaQueryMedChange = (event) => {
+      if(event.matches)setIsMobile(0.7);
+      else setIsMobile(1);
+    };
+
+    const handleMediaQuerySmChange = (event) => {
+      if(event.matches)setIsMobile(0.5);
+      else setIsMobile(0.7);
     };
 
     // Add the callback function as a listener for changes to the media query
-    mediaQuery.addEventListener("change", handleMediaQueryChange);
+    mediaQueryMed.addEventListener("change", handleMediaQueryMedChange);
+    mediaQuerySm.addEventListener("change", handleMediaQuerySmChange);
+    
 
     // Remove the listener when the component is unmounted
     return () => {
-      mediaQuery.removeEventListener("change", handleMediaQueryChange);
+      mediaQueryMed.removeEventListener("change", handleMediaQueryMedChange);
+      mediaQueryMed.removeEventListener("change", handleMediaQuerySmChange);
     };
   }, []);
 
@@ -126,3 +136,10 @@ const ComputersCanvas = () => {
 };
 
 export default ComputersCanvas; 
+
+
+
+
+
+
+

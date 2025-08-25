@@ -80,7 +80,7 @@ const Contact = () => {
     <>
     
       <div
-        className={`xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden`}
+        className={`xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden mx-auto max-w-lg`}
       >
         <AnimatedDiv
           variants={slideIn("left", "tween", 0.2, 1)}
@@ -92,7 +92,7 @@ const Contact = () => {
           <form
             ref={formRef}
             onSubmit={handleSubmit(onSubmit)}
-            className='mt-6 flex flex-col gap-3'
+            className='mt-6 flex flex-col gap-3 '
           >
             <label className='flex flex-col'>
               <span className='text-secondary font-medium'>Name</span>

@@ -37,11 +37,11 @@ const ProjectCard = ({
     >
       <div
         
-        className='bg-primary shadow-md  p-5 rounded-2xl sm:w-[360px] w-full '
+        className='bg-primary shadow-md  p-5 rounded-2xl  sm:w-[360px] w-[300px] '
       >
-        <div className='relative w-full h-[230px]'>
+        <div className='relative w-full'>
           <Tilt tiltReverse={true}>
-            <div className="relative w-[320px] h-[200px]">
+            <div className="relative w-[260px] h-[170px] sm:w-[320px] sm:h-[200px]">
               <Image
                 src={image}
                 alt="project_image"
@@ -52,11 +52,10 @@ const ProjectCard = ({
             </div>
 
 
-          </Tilt>
           
           <motion.div
             variants={fadeIn( 'right', "spring", 1.5, 0.5)}
-            className={'  w-fit h-fit absolute top-38 right-2 shadow-card '}  
+            className={'  w-fit h-fit absolute top-30 sm:top-38 right-2 shadow-card '}  
           >
             <div className="flex gap-3">
 
@@ -89,6 +88,7 @@ const ProjectCard = ({
               </div>
             </div>
           </motion.div>
+        </Tilt>
         </div>
 
         <div className='mt-5'>

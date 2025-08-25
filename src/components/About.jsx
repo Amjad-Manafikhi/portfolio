@@ -18,7 +18,7 @@ const AnimatedP = dynamic(() => import("./AnimatedP"), {
   ssr: false,
 });
 const ServiceCard = ({ index, title, icon }) => (
-  <Tilt tiltReverse={true} className='xs:w-[250px] w-full'>
+  <Tilt tiltReverse={true} className='w-[250px]'>
     <AnimatedDiv
       variants={fadeIn("right", "spring", index * 0.5, 0.75)}
       className='w-full green-pink-gradient p-[1px] rounded-[20px] shadow-2xl'
