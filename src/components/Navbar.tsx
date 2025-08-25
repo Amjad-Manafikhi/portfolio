@@ -1,34 +1,14 @@
-import { useEffect, useState } from "react";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import { useState } from "react";
 import { style } from "../styles/style";
 import { navLinks } from "../constants";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoMdClose } from "react-icons/io";
-import Image from "next/image";
+
 import { cn } from "@/lib/utils";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const router=useRouter();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      if (scrollTop > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-
+  
 
   const navLinksElements = navLinks.map((nav) => (
             <li
