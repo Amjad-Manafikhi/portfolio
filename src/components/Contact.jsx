@@ -80,7 +80,7 @@ const Contact = () => {
     <>
     
       <div
-        className={`xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden mx-auto max-w-lg`}
+        className={`xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden mx-auto xl:max-w-[1500px] max-w-lg`}
       >
         <AnimatedDiv
           variants={slideIn("left", "tween", 0.2, 1)}
