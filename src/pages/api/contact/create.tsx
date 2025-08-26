@@ -12,7 +12,6 @@ export default async function handler(
    
   if (req.method === 'POST') {
     const newRow: Contact = req.body;
-    console.log(req);
     // Check if required fields are present
     if (
       !newRow ||

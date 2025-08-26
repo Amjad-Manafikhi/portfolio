@@ -37,7 +37,6 @@ const Hero = () => {
   function download(){
     setLoading(true)
     setTimeout(() => {
-    console.log("3 seconds passed!");
     // ✅ Do your action here (download logic, navigate, etc.)
     setLoading(false);
   }, 1000);
