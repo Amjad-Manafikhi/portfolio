@@ -111,8 +111,8 @@ const ComputersCanvas = () => {
       camera={{ position: [20, 3, 2], fov: 25 }}
       gl={{ preserveDrawingBuffer: true }}
       >
-      {!isLoaded && <CanvasLoader isComputer={true} isLoaded={isLoaded} setIsLoaded={setIsLoaded} />}
-      <Suspense fallback={null}>
+      
+      <Suspense fallback={<CanvasLoader isComputer={true} isLoaded={isLoaded} setIsLoaded={setIsLoaded} />}>
         <OrbitControls
           autoRotate={rotation.rotate}
           autoRotateSpeed={rotation.speed}
