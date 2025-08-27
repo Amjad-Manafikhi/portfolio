@@ -4,22 +4,14 @@ import { services } from "../constants";
 import SectionWrapper from "../hoc";
 import { fadeIn, textVariant } from "../utils/motion";
 import Image from "next/image";
-import dynamic from 'next/dynamic';
+import  Tilt  from "react-parallax-tilt"
+import { motion } from "framer-motion"
 
-const Tilt = dynamic(() => import("react-parallax-tilt"), {
-  ssr: false,
-});
 
-const AnimatedDiv = dynamic(() => import("./AnimatedDiv"), {
-  ssr: false,
-});
 
-const AnimatedP = dynamic(() => import("./AnimatedP"), {
-  ssr: false,
-});
 const ServiceCard = ({ index, title, icon }) => (
   <Tilt tiltReverse={true} className='w-[250px]'>
-    <AnimatedDiv
+    <motion.div
       variants={fadeIn("right", "spring", index * 0.5, 0.75)}
       className='w-full green-pink-gradient p-[1px] rounded-[20px] shadow-2xl'
     >
@@ -38,19 +30,19 @@ const ServiceCard = ({ index, title, icon }) => (
           {title}
         </h3>
       </div>
-    </AnimatedDiv>
+    </motion.div>
   </Tilt>
 );
 
 const About = () => {
   return (
     <>
-      <AnimatedDiv variants={textVariant()}>
+      <motion.div variants={textVariant()}>
         <p className={style.sectionSubText}>Introduction</p>
         <h2 className={style.sectionHeadText}>Overview.</h2>
-      </AnimatedDiv>
+      </motion.div>
 
-      <AnimatedP
+      <motion.p
         variants={fadeIn("", "", 0.1, 1)}
         className='text-secondary text-[17px] max-w-3xl leading-[30px]'
       >
@@ -59,7 +51,7 @@ const About = () => {
         React, and Three.js at building scalable, efficient, and user-friendly 
         solutions. A fast learner and effective collaborator, I'm passionate about turning 
         complex ideas into real-world products that deliver impact. Let's work together to bring your vision to life!
-      </AnimatedP>
+      </motion.p>
 
       <div className='mt-20  flex flex-wrap justify-around gap-10'>
         {services.map((service, index) => (

@@ -4,11 +4,7 @@ import { style } from "../styles/style";
 import SectionWrapper from "../hoc";
 import { fadeIn, textVariant } from "../utils/motion";
 import { testimonials } from "../constants";
-import dynamic from "next/dynamic";
-
-const AnimatedDiv = dynamic(() => import("./AnimatedDiv"), {
-  ssr: false,
-});
+import { motion } from "framer-motion"
 
 const FeedbackCard = ({
   index,
@@ -18,7 +14,7 @@ const FeedbackCard = ({
   company,
   image,
 }) => (
-  <AnimatedDiv
+  <motion.div
     variants={fadeIn("", "spring", index * 0.5, 0.75)}
     className='bg-black-200 p-10 rounded-3xl xs:w-[320px] w-full'
   >
@@ -44,7 +40,7 @@ const FeedbackCard = ({
         />
       </div>
     </div>
-  </AnimatedDiv>
+  </motion.div>
 );
 
 const Feedbacks = () => {
@@ -53,10 +49,10 @@ const Feedbacks = () => {
       <div
         className={`bg-tertiary rounded-2xl ${style.padding} min-h-[300px]`}
       >
-        <AnimatedDiv variants={textVariant()}>
+        <motion.div variants={textVariant()}>
           <p className={style.sectionSubText}>What others say</p>
           <h2 className={style.sectionHeadText}>Testimonials.</h2>
-        </AnimatedDiv>
+        </motion.div>
       </div>
       <div className={`-mt-20 pb-14 ${style.paddingX} flex flex-wrap gap-7`}>
         {testimonials.map((testimonial, index) => (

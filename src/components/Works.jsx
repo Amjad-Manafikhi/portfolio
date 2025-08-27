@@ -6,20 +6,10 @@ import { projects } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
 import Image from "next/image";
 import { GiEarthAfricaEurope } from "react-icons/gi";
-import {motion} from 'framer-motion'
+import { motion } from 'framer-motion'
+import  Tilt  from  "react-parallax-tilt"
 
-import dynamic from 'next/dynamic';
-const Tilt = dynamic(() => import("react-parallax-tilt"), {
-  ssr: false,
-});
 
-const AnimatedDiv = dynamic(() => import("./AnimatedDiv"), {
-  ssr: false,
-});
-
-const AnimatedP = dynamic(() => import("./AnimatedP"), {
-  ssr: false,
-});
 
 const ProjectCard = ({
   index,
@@ -31,7 +21,7 @@ const ProjectCard = ({
   demo_link,
 }) => {
   return (
-    <AnimatedDiv 
+    <motion.div 
       variants={fadeIn( index % 2 === 1 ? 'up' : 'down', "spring", index * 0.5, 1)}
       className={' green-pink-gradient p-[2px] h-fit rounded-[20px] shadow-2xl duration-200 '}  
     >
@@ -109,20 +99,20 @@ const ProjectCard = ({
           ))}
         </div>
       </div>
-    </AnimatedDiv>
+    </motion.div>
   );
 };
 
 const Works = () => {
   return (
     <>
-      <AnimatedDiv variants={textVariant()}>
+      <motion.div variants={textVariant()}>
         <p className={`${style.sectionSubText} `}>My work</p>
         <h2 className={`${style.sectionHeadText}`}>Projects.</h2>
-      </AnimatedDiv>
+      </motion.div>
 
       <div className='w-full flex'>
-        <AnimatedP
+        <motion.p
           variants={fadeIn("", "", 0.1, 1)}
           className='mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]'
         >
@@ -131,7 +121,7 @@ const Works = () => {
           links to code repositories and live demos in it. It reflects my
           ability to solve complex problems, work with different technologies,
           and manage projects effectively.
-        </AnimatedP>
+        </motion.p>
       </div>
 
       <div className='mt-20 flex flex-wrap gap-7'>

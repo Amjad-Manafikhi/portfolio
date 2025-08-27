@@ -8,16 +8,8 @@ import toast from 'react-hot-toast'
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-
-import dynamic from 'next/dynamic';
-const AnimatedDiv = dynamic(
-  () => import('./AnimatedDiv'),
-  { 
-    ssr: false,
-    loading: () => <div className="text-white">Loading animations...</div>
-  }
-);
-
+import { motion } from "framer-motion"
+import dynamic from "next/dynamic";
 const EarthCanvas = dynamic(
   () => import('./canvas/Earth'),
   { 
@@ -82,7 +74,7 @@ const Contact = () => {
       <div
         className={`xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden mx-auto xl:max-w-[1500px] max-w-lg`}
       >
-        <AnimatedDiv
+        <motion.div
           variants={slideIn("left", "tween", 0.2, 1)}
           className='flex-[0.75] white p-6 rounded-2xl border-1 border-secondary '
         >
@@ -132,15 +124,15 @@ const Contact = () => {
               {loading ? "Sending..." : "Send"}
             </button>
           </form>
-        </AnimatedDiv>
+        </motion.div>
 
-        <AnimatedDiv
+        <motion.div
           variants={slideIn("right", "tween", 0.2, 1)}
           className='xl:flex-1 xl:h-auto md:h-[550px] h-[350px]'
           >
           
           <EarthCanvas />
-        </AnimatedDiv>
+        </motion.div>
       </div>
     </>
   );

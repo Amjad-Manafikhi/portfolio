@@ -1,4 +1,3 @@
-import dynamic from 'next/dynamic';
 import { Navbar, Hero, About, Experience, Tech, Works, Contact, StarsCanvas } from "../components"
 
 export default function Home() {
