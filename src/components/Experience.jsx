@@ -35,6 +35,7 @@ const TimelineCard = ({ experience, i }) => {
               <p className="text-sm font-semibold text-gray-700">
                 {experience.company_name}
               </p>
+              <a href={experience.link} className="text-blue-700 underline">{experience.company_name}</a>
               <p className="text-xs text-gray-600 mb-3">{experience.date}</p>
 
               <ul className="list-disc ml-5 space-y-1 text-gray-800 text-sm">

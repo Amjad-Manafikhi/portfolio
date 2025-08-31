@@ -111,6 +111,7 @@ const experiences = [
     title: "Next.js Developer",
     company_name: "Zahabi CO",
     icon: zahabi,
+    link:"https://zahabico.com/en",
     iconBg: "#383E56",
     date: "",
     points: [
