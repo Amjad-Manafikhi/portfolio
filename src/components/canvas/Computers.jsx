@@ -75,7 +75,7 @@ const ComputersCanvas = () => {
   useEffect(() => {
     // Add a listener for changes to the screen size
     const mediaQueryMed = window.matchMedia("(max-width: 600px)");
-    const mediaQuerySm = window.matchMedia("(max-width: 400px)");
+    const mediaQuerySm = window.matchMedia("(max-width: 440px)");
     
     // Set the initial value of the `isMobile` state variable
     if(mediaQueryMed.matches)setIsMobile(0.7);
@@ -92,8 +92,8 @@ const ComputersCanvas = () => {
     };
 
     // Add the callback function as a listener for changes to the media query
-    mediaQueryMed.addEventListener("change", handleMediaQueryMedChange);
     mediaQuerySm.addEventListener("change", handleMediaQuerySmChange);
+    mediaQueryMed.addEventListener("change", handleMediaQueryMedChange);
     
 
     // Remove the listener when the component is unmounted
@@ -102,6 +102,7 @@ const ComputersCanvas = () => {
       mediaQueryMed.removeEventListener("change", handleMediaQuerySmChange);
     };
   }, []);
+  
 
   return (
     <Canvas
