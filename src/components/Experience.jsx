@@ -52,7 +52,7 @@ const TimelineCard = ({ experience, i }) => {
 
 const Experience = () => {
   return (
-    <div className="relative max-w-5xl mx-auto py-10">
+    <div className="relative max-w-5xl mx-auto pt-10">
       <h2 className="text-3xl font-bold text-center mb-10 text-gray-900">Work Experience</h2>
       <div className="w-full relative">
 

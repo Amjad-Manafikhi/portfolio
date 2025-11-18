@@ -1,3 +1,4 @@
+import Highlight from "@/components/Highlight";
 import { Navbar, Hero, About, Experience, Tech, Works, Contact, StarsCanvas } from "../components"
 
 export default function Home() {
@@ -9,6 +10,7 @@ export default function Home() {
         </div>
         <About/>
         <Experience />
+        <Highlight/>
         <Tech />
         <Works />
         {/* <Feedbacks /> */}

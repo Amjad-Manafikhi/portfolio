@@ -6,6 +6,7 @@ import { projects } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
 import Image from "next/image";
 import { GiEarthAfricaEurope } from "react-icons/gi";
+import { SiGithub } from "react-icons/si";
 import { motion } from 'framer-motion'
 import  Tilt  from  "react-parallax-tilt"
 
@@ -50,17 +51,15 @@ const ProjectCard = ({
             <div className="flex gap-3">
 
 
-              <div className=' flex card-img_hover items-center justify-center'>
+              <div className='flex card-img_hover'>
                 <div
-                  onClick={() => window.open(source_code_link, "_blank")}
-                  className='bg-black border-4 border-[#915eff] w-10 h-10 rounded-full relative cursor-pointer'
+                  onClick={() => window.open(demo_link, "_blank")}
+                  className='bg-black w-10 h-10 rounded-full flex border-4 border-[#915eff]  justify-center items-center cursor-pointer'
                 >
-                  <Image
-                    fill
-                    src={github}
-                    alt='source code'
-                    className='object-contain flex'
-                  />
+                  <SiGithub
+                    
+                    className='w-10 h-10 text-white'
+                    />
                 </div>
                 
               </div>
