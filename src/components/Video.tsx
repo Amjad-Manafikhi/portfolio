@@ -11,7 +11,7 @@ export default function Video() {
             controls
             preload="none"
         >
-        <source src="/kanbanTable.Mov" type="video/mp4" />
+        <source src="/kanbanTable.mp4" type="video/mp4" />
         <track
             src="/path/to/captions.vtt"
             kind="subtitles"
