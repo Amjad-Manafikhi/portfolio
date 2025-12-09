@@ -1,0 +1,11 @@
+Model Information:
+* title:	Modular Plant Shelf
+* source:	https://sketchfab.com/3d-models/modular-plant-shelf-cfde4ceca79944be94dfd8521e0c5a55
+* author:	sch0i (https://sketchfab.com/sch0i)
+
+Model License:
+* license type:	CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
+* requirements:	Author must be credited. No commercial use.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Modular Plant Shelf" (https://sketchfab.com/3d-models/modular-plant-shelf-cfde4ceca79944be94dfd8521e0c5a55) by sch0i (https://sketchfab.com/sch0i) licensed under CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)

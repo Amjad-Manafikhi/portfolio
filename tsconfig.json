@@ -17,6 +17,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/utils/motion.js", "src/components/Experience.jsx", "src/pages/index.jsx", "src/hoc/index.jsx", "src/hoc/sectionWrapper.jsx", "src/components/Highlight.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/utils/motion.js", "src/components/Experience.jsx", "src/pages/index.jsx", "src/hoc/index.jsx", "src/hoc/sectionWrapper.jsx", "src/components/Highlight.jsx", "src/components/canvas/Room3D.jsx", "src/components/RoomCard.jsx", "src/components/RoomTech.jsx"],
   "exclude": ["node_modules"]
 }

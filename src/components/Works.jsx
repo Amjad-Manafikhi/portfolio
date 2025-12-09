@@ -23,7 +23,7 @@ const ProjectCard = ({
 }) => {
   return (
     <motion.div 
-      variants={fadeIn( index % 2 === 1 ? 'up' : 'down', "spring", index * 0.5, 1)}
+      variants={fadeIn( index % 2 === 1 ? 'up' : 'down', "spring", 0, 0)}
       className={' green-pink-gradient p-[2px] h-fit rounded-[20px] shadow-2xl duration-200 '}  
     >
       <div
@@ -45,7 +45,7 @@ const ProjectCard = ({
 
           
           <motion.div
-            variants={fadeIn( 'right', "spring", 1.5, 0.5)}
+            variants={fadeIn( 'right', "spring", 0, 0)}
             className={'  w-fit h-fit absolute top-30 sm:top-38 right-2 shadow-card '}  
           >
             <div className="flex gap-3">
@@ -105,14 +105,14 @@ const ProjectCard = ({
 const Works = () => {
   return (
     <>
-      <motion.div variants={textVariant()}>
+      <motion.div >
         <p className={`${style.sectionSubText} `}>My work</p>
         <h2 className={`${style.sectionHeadText}`}>Projects.</h2>
       </motion.div>
 
       <div className='w-full flex'>
         <motion.p
-          variants={fadeIn("", "", 0.1, 1)}
+          variants={fadeIn("", "", 0, 0)}
           className='mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]'
         >
           Following projects showcases my skills and experience through
