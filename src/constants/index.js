@@ -23,6 +23,7 @@ import {
   hammam,
   threejs,
   next,
+  dndkit,
 } from "../assets/index";
 
 export const navLinks = [
@@ -93,8 +94,8 @@ const technologies = [
     icon: mysql,
   },
   {
-    name: "Three JS",
-    icon: threejs,
+    name: "dnd-kit",
+    icon: dndkit,
   },
   {
     name: "git",
@@ -104,6 +105,11 @@ const technologies = [
     name: "figma",
     icon: figma,
   },
+  {
+    name: "Three JS",
+    icon: threejs,
+  },
+  
 ];
 
 const experiences = [

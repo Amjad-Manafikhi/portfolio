@@ -52,17 +52,18 @@ export default function Room3D() {
         floorMaterial.map = floorTexture;
         floorMaterial.metalness = 0.5;
         floorMaterial.roughness = 0.5;
-        const pointLight = new Three.PointLight('pink', 10);
-        const pointLight2 = new Three.PointLight('cyan', 10,0,3);
-        pointLight2.position.x = -5;
-        pointLight2.position.z = -2.8;
-        pointLight2.position.y = 1;
-        // pointLight2.rotation.x=-2;
-        pointLight.position.x = 5;
-        pointLight.position.z = -2;
-        //  pointLight.rotation.x=2;
-        scene.add(pointLight);
-        scene.add(pointLight2);
+         const pointLight = new Three.PointLight('#FFFACD', 10);
+        // const pointLight2 = new Three.PointLight('cyan', 10,0,3);
+        // pointLight2.position.x = -5;
+        // pointLight2.position.z = -2.8;
+        // pointLight2.position.y = 1;
+        // // pointLight2.rotation.x=-2;
+         pointLight.position.x = 3.4;
+         pointLight.position.z = -3.4;
+         //pointLight.rotation.x=2;
+         scene.add(pointLight);
+        // scene.add(pointLight2);
+        
 
         floorTexture.repeat.set(4, 4);
         floorTexture.wrapS = Three.MirroredRepeatWrapping
@@ -87,7 +88,7 @@ export default function Room3D() {
         const floor = new Three.Mesh(planeGeometry, floorMaterial);
         leftWallRef.current = leftWall
         endWallRef.current = endWall
-        const light = new Three.AmbientLight("white", 0);
+        const light = new Three.AmbientLight("white", 0.0);
         
         const plantLight = new Three.SpotLight("green", 20); // intensity
         plantLight.position.set(0, 3, 2); // above the model
@@ -96,7 +97,7 @@ export default function Room3D() {
         plantLight.angle = Math.PI / 8;     // narrow beam (like real plantLight)
         plantLight.penumbra = 1;          // soft edges
         plantLight.decay = 1;               // realistic falloff
-        plantLight.distance = 10;           // how far light travels
+        plantLight.distance = 30;           // how far light travels
 
         plantLight.castShadow = true;
         plantLight.shadow.mapSize.width = 2048;
@@ -117,7 +118,7 @@ export default function Room3D() {
         plantLight2.angle = Math.PI / 8;     // narrow beam (like real plantLight2)
         plantLight2.penumbra = 1;          // soft edges
         plantLight2.decay = 1;               // realistic falloff
-        plantLight2.distance = 10;           // how far light travels
+        plantLight2.distance = 30;           // how far light travels
 
         plantLight2.castShadow = true;
         plantLight2.shadow.mapSize.width = 2048;
@@ -129,6 +130,27 @@ export default function Room3D() {
         scene.add(plantLight2.target);
                 
         scene.add(plantLight2);
+
+
+        const projectsLight = new Three.SpotLight("#FFFACD", 7); // intensity
+        projectsLight.position.set(0, 3.5, 2); // above the model
+        projectsLight.rotateY(-Math.PI/2); // above the model
+
+        projectsLight.angle = Math.PI / 5;     // narrow beam (like real projectsLight)
+        projectsLight.penumbra = 1;          // soft edges
+        projectsLight.decay = 1;               // realistic falloff
+        projectsLight.distance = 10;           // how far light travels
+
+        projectsLight.castShadow = true;
+        projectsLight.shadow.mapSize.width = 2048;
+        projectsLight.shadow.mapSize.height = 2048;
+        projectsLight.shadow.bias = -0.0001;
+
+        // IMPORTANT: projectsLight must aim at something
+        projectsLight.target.position.set(-4.8, 0, 0.2); // point on your wall or model
+        scene.add(projectsLight.target);
+                
+        scene.add(projectsLight);
         
         const camera = new Three.PerspectiveCamera(
             75,
@@ -145,7 +167,7 @@ export default function Room3D() {
 
         // ----------- FPS CONTROLS (added) ------------
         const controls = new PointerLockControls(camera, document.body);
-
+        
         const start = () => controls.lock();
         window.addEventListener("click", start);
         scene.add(controls.getObject());
@@ -295,6 +317,15 @@ renderer.shadowMap.type = Three.PCFSoftShadowMap;
                 if (moveLeft) controls.moveRight(-speed * delta);
                 if (moveRight) controls.moveRight(speed * delta);
             }
+            const eps = 0.5;
+            const xMax = rightWall.position.x - eps;
+            const xMin = leftWall.position.x + eps;
+            const zMax = 5 ;
+            const zMin = endWall.position.z + eps;
+
+            controls.getObject().position.x = Math.min(Math.max(controls.getObject().position.x, xMin), xMax);
+            controls.getObject().position.z = Math.min(Math.max(controls.getObject().position.z, zMin), zMax);
+
             // ---------------------------------------
             
             renderer.render(scene, camera);
