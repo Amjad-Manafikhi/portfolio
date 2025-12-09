@@ -371,9 +371,9 @@ renderer.shadowMap.type = Three.PCFSoftShadowMap;
             </div>
             <div
             ref={projectsTitleRef}
-            className={` -z-10 w-[450px] mx-auto h-auto overflow-hidden absolute top-0 left-0 opacity-100 pointer-events-none`}
+            className={` -z-10 w-[450px] mx-auto h-[100px] overflow-hidden absolute top-0 left-0 opacity-100 pointer-events-none`}
             >
-                <h1 className='text-white text-2xl mx-auto '>My Projects</h1>
+                <h1 className='text-white text-3xl mx-auto '>My Projects</h1>
             </div>
             <div className='absolute p-2 px-4 text-xs top-4 right-4 rounded-sm text-gray-300 bg-[#28292E]'>
                 <p>Click any where to start.</p>
