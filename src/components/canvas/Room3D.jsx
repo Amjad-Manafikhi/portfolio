@@ -170,7 +170,7 @@ export default function Room3D() {
         
         const start = () => controls.lock();
         window.addEventListener("click", start);
-        scene.add(controls.object());
+        scene.add(controls.object);
 
         let moveForward = false;
         let moveBackward = false;
@@ -323,8 +323,8 @@ renderer.shadowMap.type = Three.PCFSoftShadowMap;
             const zMax = 5 ;
             const zMin = endWall.position.z + eps;
 
-            controls.object().position.x = Math.min(Math.max(controls.object().position.x, xMin), xMax);
-            controls.object().position.z = Math.min(Math.max(controls.object().position.z, zMin), zMax);
+            controls.object.position.x = Math.min(Math.max(controls.object.position.x, xMin), xMax);
+            controls.object.position.z = Math.min(Math.max(controls.object.position.z, zMin), zMax);
 
             // ---------------------------------------
             
