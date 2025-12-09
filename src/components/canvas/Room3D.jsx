@@ -75,11 +75,11 @@ export default function Room3D() {
         wallNormalTexture.wrapS = Three.MirroredRepeatWrapping
         wallNormalTexture.wrapT = Three.MirroredRepeatWrapping
 
-        const pane = new Pane();
-        pane.addBinding(wallMaterial, 'metalness', { min: 0, max: 1, step: 0.01 });
-        pane.addBinding(wallMaterial, 'roughness', { min: 0, max: 1, step: 0.01 });
-        pane.addBinding(wallMaterial, 'reflectivity', { min: 0, max: 1, step: 0.01 });
-        pane.addBinding(wallMaterial, 'clearcoat', { min: 0, max: 1, step: 0.01 });
+        // const pane = new Pane();
+        // pane.addBinding(wallMaterial, 'metalness', { min: 0, max: 1, step: 0.01 });
+        // pane.addBinding(wallMaterial, 'roughness', { min: 0, max: 1, step: 0.01 });
+        // pane.addBinding(wallMaterial, 'reflectivity', { min: 0, max: 1, step: 0.01 });
+        // pane.addBinding(wallMaterial, 'clearcoat', { min: 0, max: 1, step: 0.01 });
 
         //const cubeMesh = new Three.Mesh(cubeGeometry, cubeMaterial);
         const leftWall = new Three.Mesh(planeGeometry, wallMaterial);
@@ -373,7 +373,12 @@ renderer.shadowMap.type = Three.PCFSoftShadowMap;
             ref={projectsTitleRef}
             className={` -z-10 w-[450px] mx-auto h-auto overflow-hidden absolute top-0 left-0 opacity-100 pointer-events-none`}
             >
-                <h1 className='text-white text-4xl mx-auto '>My Projects</h1>
+                <h1 className='text-white text-2xl mx-auto '>My Projects</h1>
+            </div>
+            <div className='absolute p-2 px-4 text-xs top-4 right-4 rounded-sm text-gray-300 bg-[#28292E]'>
+                <p>Click any where to start.</p>
+                <p>Press Esc to show your cursor.</p>
+                
             </div>
 
             <RoomCard cardRef={card1Ref} leftWall={leftWallRef} size={{ width: 1.8, height: 2.5 }} position={{ x: -3, y: -0.5, z: 0.01 }} ready={ready} />
